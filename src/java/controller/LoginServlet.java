@@ -83,8 +83,7 @@ public class LoginServlet extends HttpServlet {
         if (email.equals("admin@gmail.com") && password.equals("admin")) {
             session.setAttribute("admin", new Customer());
             response.sendRedirect("admin-page");
-        }
-        if (c != null) {
+        }else if (c != null) {
             CartDAO cartDB = new CartDAO();
             List<Item> list = cartDB.getAllItem(c);
             if (list.size() != 0) {
