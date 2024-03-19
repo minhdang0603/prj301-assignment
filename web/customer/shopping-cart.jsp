@@ -10,8 +10,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Shopping Cart</title>
         <link rel="stylesheet" href="bootstrap/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/profilecss.css"/>
     </head>
     <body>
         <%@include file="../component/navbar.jsp" %>
@@ -70,6 +71,27 @@
                 </div>
             </div>
         </main>
+        <div id="toastBox">
+            <c:set var="msg" value="${msg}"></c:set>
+            <c:remove scope="session" var="msg"></c:remove>
+            <div id="message">${msg}</div>
+        </div>
         <script src="bootstrap/bootstrap.bundle.min.js"></script>
+        <script>
+            let toastBox = document.getElementById("toastBox");
+            let msg = document.getElementById("message").innerHTML;
+            let toast = document.createElement("div");
+            toast.classList.add("toast");
+
+            if (msg === "Fail") {
+                toast.classList.add("error");
+                toast.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Your cart is empty!';
+                toastBox.appendChild(toast);
+            }
+
+            setTimeout(() => {
+                toast.remove();
+            }, 6000);
+        </script>
     </body>
 </html>

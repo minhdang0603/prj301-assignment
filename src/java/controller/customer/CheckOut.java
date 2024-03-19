@@ -73,6 +73,10 @@ public class CheckOut extends HttpServlet {
         CartDAO cartDB = new CartDAO();
         ProductDAO prodDB = new ProductDAO();
         List<Item> cart = cartDB.getAllItem(c);
+        if (cart.isEmpty()) {
+            session.setAttribute("msg", "Fail");
+            response.sendRedirect("shopping-cart");
+        }
         List<Product> prodList = prodDB.getAllProduct();
         double total = 0;
         for (Item item : cart) {

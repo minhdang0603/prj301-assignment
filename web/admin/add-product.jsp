@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Add Product</title>
         <link rel="stylesheet" href="bootstrap/bootstrap.min.css"/>
         <link rel="stylesheet" href="css/profilecss.css"/>  
     </head>

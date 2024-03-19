@@ -13,7 +13,7 @@ create table customer(
 	last_name nvarchar(50) not null,
 	[address] nvarchar(250),
 	province nvarchar(30),
-	district nvarchar(30),
+	[district] nvarchar(30),
 	ward nvarchar(30),
 	email varchar(100) not null,
 	password varchar(50) not null

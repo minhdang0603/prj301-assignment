@@ -76,14 +76,15 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
-        String password = request.getParameter("pass");
+        String password = request.getParameter("pass"); 
         HttpSession session = request.getSession();
         CustomerDAO cusDB = new CustomerDAO();
         Customer c = cusDB.getCustomerByEmailAndPassword(email, password);
         if (email.equals("admin@gmail.com") && password.equals("admin")) {
             session.setAttribute("admin", new Customer());
             response.sendRedirect("admin-page");
-        }else if (c != null) {
+        }
+        if (c != null) {
             CartDAO cartDB = new CartDAO();
             List<Item> list = cartDB.getAllItem(c);
             if (list.size() != 0) {
