@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
+import java.io.File;
 import java.util.List;
 import model.Category;
 import model.Product;
@@ -85,6 +86,8 @@ public class ProductController extends HttpServlet {
                 String description = request.getParameter("summary");
                 Part part = request.getPart("image");
                 String image = getFileName(part);
+                String path = getServletContext().getRealPath("/images" + File.separator + image);
+                part.write(path);
                 Product p = new Product(productName, image, price, description);
                 if (prodDB.addProduct(p, categoryID)) {
                     Product newest = prodDB.getNewestProduct();
